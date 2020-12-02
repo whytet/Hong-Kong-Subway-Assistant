@@ -1,5 +1,5 @@
 // SubwayBFSImplementation.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// Terrance W
 
 #include <iostream>
 #include <iterator>
@@ -14,7 +14,6 @@ private:
     int v;                              // number of vertices
     int e;                              // number of edges
     int** adj;                          // matrix
-
 public:
     Graph(int v, int e) {           // fills in adj matrix; default edges is 0
         this->v = v;
@@ -27,12 +26,10 @@ public:
             }
         }
     }
-
     void addEdge(int start, int end) {   // indicates where edge has been created between two vertices
         adj[start][end] = 1;
         adj[end][start] = 1;
     }
-
     void displayAdj() {
         int i, j;
         for (i = 0; i < v; i++) {
@@ -42,18 +39,15 @@ public:
             cout << endl;
         }
     }
-
     // BFS function should find the shortest route from start to end and display the route in order. 
     void BFS(int startNode, int endNode) {
         int distance = 0;
         queue<int> nodeList;
-
         int parentList[90];
         bool visited[90] = { false };
         int dis[90] = { 0 };
         int currentNode;
         int w;
-
         visited[startNode] = true;
         dis[startNode] = 0;
         nodeList.push(startNode);
@@ -64,15 +58,12 @@ public:
             if (currentNode == endNode) {
                 queue<int> revPath;
                 stack<int> path;
-
                 parentList[w] = currentNode;
                 int cameFrom = parentList[endNode];
                 revPath.push(cameFrom);
-
                 while (cameFrom != startNode) {
                     cameFrom = parentList[cameFrom];
                     revPath.push(cameFrom);
-
                 }
                 while (!revPath.empty()) {
                     path.push(revPath.front());
@@ -98,15 +89,12 @@ public:
         }
     }
 };
-
 int main() {
     // Initialize start and end variables
     int start;
     int end;
-
     //Creating HK Sub-System
     Graph HK(90, 90);
-
     // Connect the vertices
     HK.addEdge(0, 1);
     HK.addEdge(0, 2);
@@ -205,14 +193,11 @@ int main() {
     HK.addEdge(43, 44);
     HK.addEdge(3, 70);
     HK.addEdge(42, 71);
-
-
     // Interface to recieve start and end variables
     cout << "Please Enter Your Current Station Number: " << endl;
     cin >> start;
     cout << "Please Enter The Station Number of Your Destination: " << endl;
     cin >> end;
-
     // Calling BFS function and displaying the route from start to finish
     HK.BFS(start, end);
 
