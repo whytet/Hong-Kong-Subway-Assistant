@@ -1,4 +1,4 @@
-# SubwayBFSImplementation
+# Hong Kong Subway Assistant
 Takes the Hong Kong subway system and finds the shortest path from A to B
 
 Hong Kong Subway Map.jpg has corresponding numbers for every station in the Hong Kong Subway system. 
